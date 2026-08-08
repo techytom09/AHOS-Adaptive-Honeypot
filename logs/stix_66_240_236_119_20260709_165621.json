@@ -1,0 +1,90 @@
+{
+    "type": "bundle",
+    "id": "bundle--e670fad4-f126-4a1c-b24b-11784d095d16",
+    "objects": [
+        {
+            "type": "identity",
+            "spec_version": "2.1",
+            "id": "identity--d5ccb243-7cca-4149-a8bc-4a40606a5ad9",
+            "created": "2026-07-09T20:55:53.61089Z",
+            "modified": "2026-07-09T20:55:53.61089Z",
+            "name": "AHOS - Adaptive Honeypot Orchestration System",
+            "description": "Automated threat intelligence from AHOS honeypot platform",
+            "identity_class": "system"
+        },
+        {
+            "type": "threat-actor",
+            "spec_version": "2.1",
+            "id": "threat-actor--896587a5-e332-4d11-bece-c905aefaf47f",
+            "created": "2026-07-09T20:56:21.242008Z",
+            "modified": "2026-07-09T20:56:21.242008Z",
+            "name": "Attacker-66_240_236_119",
+            "description": "Detected via AHOS honeypot. Tool: shodan_crawler. Human: False",
+            "threat_actor_types": [
+                "hacker"
+            ],
+            "first_seen": "2026-07-09T20:56:21.241991Z",
+            "sophistication": "minimal",
+            "labels": [
+                "medium",
+                "shodan_crawler"
+            ]
+        },
+        {
+            "type": "attack-pattern",
+            "spec_version": "2.1",
+            "id": "attack-pattern--0b00a882-b802-4767-90af-fb4aaabb8947",
+            "created": "2026-07-09T20:56:21.242312Z",
+            "modified": "2026-07-09T20:56:21.242312Z",
+            "name": "Search Open Websites/Domains",
+            "description": "Automated internet crawling via Shodan search engine",
+            "external_references": [
+                {
+                    "source_name": "mitre-attack",
+                    "url": "https://attack.mitre.org/techniques/T1593",
+                    "external_id": "T1593"
+                }
+            ]
+        },
+        {
+            "type": "indicator",
+            "spec_version": "2.1",
+            "id": "indicator--a3779ea6-5d08-42a5-8e9d-21395ff5a18f",
+            "created": "2026-07-09T20:56:21.242515Z",
+            "modified": "2026-07-09T20:56:21.242515Z",
+            "name": "Malicious IP: 66.240.236.119",
+            "description": "IP observed conducting Search Open Websites/Domains",
+            "indicator_types": [
+                "malicious-activity"
+            ],
+            "pattern": "[ipv4-addr:value = '66.240.236.119']",
+            "pattern_type": "stix",
+            "pattern_version": "2.1",
+            "valid_from": "2026-07-09T20:56:21.242508Z",
+            "labels": [
+                "shodan_crawler",
+                "medium"
+            ]
+        },
+        {
+            "type": "relationship",
+            "spec_version": "2.1",
+            "id": "relationship--7694ae0a-fd46-4618-b85f-f162b820a763",
+            "created": "2026-07-09T20:56:21.243292Z",
+            "modified": "2026-07-09T20:56:21.243292Z",
+            "relationship_type": "uses",
+            "source_ref": "threat-actor--896587a5-e332-4d11-bece-c905aefaf47f",
+            "target_ref": "attack-pattern--0b00a882-b802-4767-90af-fb4aaabb8947"
+        },
+        {
+            "type": "relationship",
+            "spec_version": "2.1",
+            "id": "relationship--2c9bac58-8cd2-44cd-9e80-ba5c057bc6ed",
+            "created": "2026-07-09T20:56:21.243476Z",
+            "modified": "2026-07-09T20:56:21.243476Z",
+            "relationship_type": "indicates",
+            "source_ref": "indicator--a3779ea6-5d08-42a5-8e9d-21395ff5a18f",
+            "target_ref": "threat-actor--896587a5-e332-4d11-bece-c905aefaf47f"
+        }
+    ]
+}

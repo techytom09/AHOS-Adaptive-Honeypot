@@ -1,0 +1,90 @@
+{
+    "type": "bundle",
+    "id": "bundle--8457e8f9-53c3-4128-ac89-0ea5a38d3a79",
+    "objects": [
+        {
+            "type": "identity",
+            "spec_version": "2.1",
+            "id": "identity--3ee573ca-ec97-4283-871f-4a0d5e845428",
+            "created": "2026-07-09T21:00:58.002447Z",
+            "modified": "2026-07-09T21:00:58.002447Z",
+            "name": "AHOS - Adaptive Honeypot Orchestration System",
+            "description": "Automated threat intelligence from AHOS honeypot platform",
+            "identity_class": "system"
+        },
+        {
+            "type": "threat-actor",
+            "spec_version": "2.1",
+            "id": "threat-actor--c5690a92-aef7-4f56-b085-6dc65ce02286",
+            "created": "2026-07-09T21:01:09.529368Z",
+            "modified": "2026-07-09T21:01:09.529368Z",
+            "name": "Attacker-45_33_32_156",
+            "description": "Detected via AHOS honeypot. Tool: nmap_syn_scan. Human: False",
+            "threat_actor_types": [
+                "nation-state"
+            ],
+            "first_seen": "2026-07-09T21:01:09.529359Z",
+            "sophistication": "minimal",
+            "labels": [
+                "critical",
+                "nmap_syn_scan"
+            ]
+        },
+        {
+            "type": "attack-pattern",
+            "spec_version": "2.1",
+            "id": "attack-pattern--700b0057-da05-4f3e-a757-25bc563ecfdd",
+            "created": "2026-07-09T21:01:09.52981Z",
+            "modified": "2026-07-09T21:01:09.52981Z",
+            "name": "Network Service Discovery",
+            "description": "Adversary scanning network services using SYN scan technique",
+            "external_references": [
+                {
+                    "source_name": "mitre-attack",
+                    "url": "https://attack.mitre.org/techniques/T1046",
+                    "external_id": "T1046"
+                }
+            ]
+        },
+        {
+            "type": "indicator",
+            "spec_version": "2.1",
+            "id": "indicator--b197c6a1-c4e8-4fc5-8337-8254be37b365",
+            "created": "2026-07-09T21:01:09.529906Z",
+            "modified": "2026-07-09T21:01:09.529906Z",
+            "name": "Malicious IP: 45.33.32.156",
+            "description": "IP observed conducting Network Service Discovery",
+            "indicator_types": [
+                "malicious-activity"
+            ],
+            "pattern": "[ipv4-addr:value = '45.33.32.156']",
+            "pattern_type": "stix",
+            "pattern_version": "2.1",
+            "valid_from": "2026-07-09T21:01:09.529902Z",
+            "labels": [
+                "nmap_syn_scan",
+                "critical"
+            ]
+        },
+        {
+            "type": "relationship",
+            "spec_version": "2.1",
+            "id": "relationship--4f078cf5-b559-4d8c-9b26-5ac6fb42ab3c",
+            "created": "2026-07-09T21:01:09.532415Z",
+            "modified": "2026-07-09T21:01:09.532415Z",
+            "relationship_type": "uses",
+            "source_ref": "threat-actor--c5690a92-aef7-4f56-b085-6dc65ce02286",
+            "target_ref": "attack-pattern--700b0057-da05-4f3e-a757-25bc563ecfdd"
+        },
+        {
+            "type": "relationship",
+            "spec_version": "2.1",
+            "id": "relationship--8188d660-c784-41bb-8b90-bf71f49901e4",
+            "created": "2026-07-09T21:01:09.532649Z",
+            "modified": "2026-07-09T21:01:09.532649Z",
+            "relationship_type": "indicates",
+            "source_ref": "indicator--b197c6a1-c4e8-4fc5-8337-8254be37b365",
+            "target_ref": "threat-actor--c5690a92-aef7-4f56-b085-6dc65ce02286"
+        }
+    ]
+}

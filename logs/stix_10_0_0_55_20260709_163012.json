@@ -1,0 +1,90 @@
+{
+    "type": "bundle",
+    "id": "bundle--76ea2644-264f-4a9b-83ea-b49287d02e8c",
+    "objects": [
+        {
+            "type": "identity",
+            "spec_version": "2.1",
+            "id": "identity--2dd31c71-9a02-44b3-a42b-4873404665a8",
+            "created": "2026-07-09T20:27:51.45847Z",
+            "modified": "2026-07-09T20:27:51.45847Z",
+            "name": "AHOS - Adaptive Honeypot Orchestration System",
+            "description": "Automated threat intelligence from AHOS honeypot platform",
+            "identity_class": "system"
+        },
+        {
+            "type": "threat-actor",
+            "spec_version": "2.1",
+            "id": "threat-actor--e678e867-9018-4eeb-beea-ac647d179ded",
+            "created": "2026-07-09T20:30:12.48862Z",
+            "modified": "2026-07-09T20:30:12.48862Z",
+            "name": "Attacker-10_0_0_55",
+            "description": "Detected via AHOS honeypot. Tool: windows_manual. Human: True",
+            "threat_actor_types": [
+                "criminal"
+            ],
+            "first_seen": "2026-07-09T20:30:12.488612Z",
+            "sophistication": "intermediate",
+            "labels": [
+                "high",
+                "windows_manual"
+            ]
+        },
+        {
+            "type": "attack-pattern",
+            "spec_version": "2.1",
+            "id": "attack-pattern--66cf3812-572e-4278-ab1e-8325d3edf78a",
+            "created": "2026-07-09T20:30:12.488746Z",
+            "modified": "2026-07-09T20:30:12.488746Z",
+            "name": "Remote Services",
+            "description": "Manual connection attempt from Windows host - likely human operator",
+            "external_references": [
+                {
+                    "source_name": "mitre-attack",
+                    "url": "https://attack.mitre.org/techniques/T1021",
+                    "external_id": "T1021"
+                }
+            ]
+        },
+        {
+            "type": "indicator",
+            "spec_version": "2.1",
+            "id": "indicator--d31d2c5b-706b-4d5a-9145-f24b725f6b6e",
+            "created": "2026-07-09T20:30:12.488833Z",
+            "modified": "2026-07-09T20:30:12.488833Z",
+            "name": "Malicious IP: 10.0.0.55",
+            "description": "IP observed conducting Remote Services",
+            "indicator_types": [
+                "malicious-activity"
+            ],
+            "pattern": "[ipv4-addr:value = '10.0.0.55']",
+            "pattern_type": "stix",
+            "pattern_version": "2.1",
+            "valid_from": "2026-07-09T20:30:12.488829Z",
+            "labels": [
+                "windows_manual",
+                "high"
+            ]
+        },
+        {
+            "type": "relationship",
+            "spec_version": "2.1",
+            "id": "relationship--c5692beb-69b5-48e1-a6d9-c37869dddbd8",
+            "created": "2026-07-09T20:30:12.489136Z",
+            "modified": "2026-07-09T20:30:12.489136Z",
+            "relationship_type": "uses",
+            "source_ref": "threat-actor--e678e867-9018-4eeb-beea-ac647d179ded",
+            "target_ref": "attack-pattern--66cf3812-572e-4278-ab1e-8325d3edf78a"
+        },
+        {
+            "type": "relationship",
+            "spec_version": "2.1",
+            "id": "relationship--c7854391-ced6-4dfc-ab97-f226fc5f1bec",
+            "created": "2026-07-09T20:30:12.489274Z",
+            "modified": "2026-07-09T20:30:12.489274Z",
+            "relationship_type": "indicates",
+            "source_ref": "indicator--d31d2c5b-706b-4d5a-9145-f24b725f6b6e",
+            "target_ref": "threat-actor--e678e867-9018-4eeb-beea-ac647d179ded"
+        }
+    ]
+}

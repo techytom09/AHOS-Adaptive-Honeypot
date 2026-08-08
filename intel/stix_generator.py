@@ -163,6 +163,16 @@ class STIXGenerator:
             "generated": datetime.now().isoformat()
         }))
 
+        # Also publish to pubsub for dashboard
+        rd.publish("stix_reports", json.dumps({
+            "filename":  filename,
+            "src_ip":    src_ip,
+            "tool":      tool,
+            "threat":    threat,
+            "mitre_id":  attack_info["mitre_id"],
+            "generated": datetime.now().isoformat()
+        }))
+
         return filename
 
     def start(self):

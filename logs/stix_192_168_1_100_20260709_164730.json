@@ -1,0 +1,90 @@
+{
+    "type": "bundle",
+    "id": "bundle--b6fcc4b6-9dfc-4de9-8100-39ade936a4dc",
+    "objects": [
+        {
+            "type": "identity",
+            "spec_version": "2.1",
+            "id": "identity--f1148e73-6985-4303-91e6-6cc7e306afac",
+            "created": "2026-07-09T20:45:33.447626Z",
+            "modified": "2026-07-09T20:45:33.447626Z",
+            "name": "AHOS - Adaptive Honeypot Orchestration System",
+            "description": "Automated threat intelligence from AHOS honeypot platform",
+            "identity_class": "system"
+        },
+        {
+            "type": "threat-actor",
+            "spec_version": "2.1",
+            "id": "threat-actor--c84214de-a8cd-42ca-845a-71693d412215",
+            "created": "2026-07-09T20:47:30.125789Z",
+            "modified": "2026-07-09T20:47:30.125789Z",
+            "name": "Attacker-192_168_1_100",
+            "description": "Detected via AHOS honeypot. Tool: linux_manual. Human: True",
+            "threat_actor_types": [
+                "criminal"
+            ],
+            "first_seen": "2026-07-09T20:47:30.125763Z",
+            "sophistication": "intermediate",
+            "labels": [
+                "high",
+                "linux_manual"
+            ]
+        },
+        {
+            "type": "attack-pattern",
+            "spec_version": "2.1",
+            "id": "attack-pattern--1b2a671b-65c1-4d6d-878f-6ea5d9de3d98",
+            "created": "2026-07-09T20:47:30.126149Z",
+            "modified": "2026-07-09T20:47:30.126149Z",
+            "name": "Remote Services",
+            "description": "Manual connection attempt from Linux host - likely human operator",
+            "external_references": [
+                {
+                    "source_name": "mitre-attack",
+                    "url": "https://attack.mitre.org/techniques/T1021",
+                    "external_id": "T1021"
+                }
+            ]
+        },
+        {
+            "type": "indicator",
+            "spec_version": "2.1",
+            "id": "indicator--836d82e9-a73f-49aa-9fcd-fd78044b3a3f",
+            "created": "2026-07-09T20:47:30.126424Z",
+            "modified": "2026-07-09T20:47:30.126424Z",
+            "name": "Malicious IP: 192.168.1.100",
+            "description": "IP observed conducting Remote Services",
+            "indicator_types": [
+                "malicious-activity"
+            ],
+            "pattern": "[ipv4-addr:value = '192.168.1.100']",
+            "pattern_type": "stix",
+            "pattern_version": "2.1",
+            "valid_from": "2026-07-09T20:47:30.126416Z",
+            "labels": [
+                "linux_manual",
+                "high"
+            ]
+        },
+        {
+            "type": "relationship",
+            "spec_version": "2.1",
+            "id": "relationship--2bfc4451-52a1-4c21-b142-6302a29d06c1",
+            "created": "2026-07-09T20:47:30.127187Z",
+            "modified": "2026-07-09T20:47:30.127187Z",
+            "relationship_type": "uses",
+            "source_ref": "threat-actor--c84214de-a8cd-42ca-845a-71693d412215",
+            "target_ref": "attack-pattern--1b2a671b-65c1-4d6d-878f-6ea5d9de3d98"
+        },
+        {
+            "type": "relationship",
+            "spec_version": "2.1",
+            "id": "relationship--921baf72-33f6-4396-adc3-53b52a500e94",
+            "created": "2026-07-09T20:47:30.127402Z",
+            "modified": "2026-07-09T20:47:30.127402Z",
+            "relationship_type": "indicates",
+            "source_ref": "indicator--836d82e9-a73f-49aa-9fcd-fd78044b3a3f",
+            "target_ref": "threat-actor--c84214de-a8cd-42ca-845a-71693d412215"
+        }
+    ]
+}

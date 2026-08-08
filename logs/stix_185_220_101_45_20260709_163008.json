@@ -1,0 +1,90 @@
+{
+    "type": "bundle",
+    "id": "bundle--7dd301f6-f098-4cab-9de1-e8c4dce638c2",
+    "objects": [
+        {
+            "type": "identity",
+            "spec_version": "2.1",
+            "id": "identity--2dd31c71-9a02-44b3-a42b-4873404665a8",
+            "created": "2026-07-09T20:27:51.45847Z",
+            "modified": "2026-07-09T20:27:51.45847Z",
+            "name": "AHOS - Adaptive Honeypot Orchestration System",
+            "description": "Automated threat intelligence from AHOS honeypot platform",
+            "identity_class": "system"
+        },
+        {
+            "type": "threat-actor",
+            "spec_version": "2.1",
+            "id": "threat-actor--4307db6d-b8fa-48ad-93f5-f2229479d1bf",
+            "created": "2026-07-09T20:30:08.485585Z",
+            "modified": "2026-07-09T20:30:08.485585Z",
+            "name": "Attacker-185_220_101_45",
+            "description": "Detected via AHOS honeypot. Tool: masscan. Human: False",
+            "threat_actor_types": [
+                "nation-state"
+            ],
+            "first_seen": "2026-07-09T20:30:08.485576Z",
+            "sophistication": "minimal",
+            "labels": [
+                "critical",
+                "masscan"
+            ]
+        },
+        {
+            "type": "attack-pattern",
+            "spec_version": "2.1",
+            "id": "attack-pattern--4b8c2a53-77c7-400f-b8e8-966e3df053ef",
+            "created": "2026-07-09T20:30:08.485718Z",
+            "modified": "2026-07-09T20:30:08.485718Z",
+            "name": "Active Scanning",
+            "description": "Mass internet scanning to identify open ports and services",
+            "external_references": [
+                {
+                    "source_name": "mitre-attack",
+                    "url": "https://attack.mitre.org/techniques/T1595",
+                    "external_id": "T1595"
+                }
+            ]
+        },
+        {
+            "type": "indicator",
+            "spec_version": "2.1",
+            "id": "indicator--c3225f79-8d65-4454-a8bc-9f4724b50ec8",
+            "created": "2026-07-09T20:30:08.485808Z",
+            "modified": "2026-07-09T20:30:08.485808Z",
+            "name": "Malicious IP: 185.220.101.45",
+            "description": "IP observed conducting Active Scanning",
+            "indicator_types": [
+                "malicious-activity"
+            ],
+            "pattern": "[ipv4-addr:value = '185.220.101.45']",
+            "pattern_type": "stix",
+            "pattern_version": "2.1",
+            "valid_from": "2026-07-09T20:30:08.485805Z",
+            "labels": [
+                "masscan",
+                "critical"
+            ]
+        },
+        {
+            "type": "relationship",
+            "spec_version": "2.1",
+            "id": "relationship--e02725a2-93b1-4d99-a501-af1ffcaa9b9c",
+            "created": "2026-07-09T20:30:08.486178Z",
+            "modified": "2026-07-09T20:30:08.486178Z",
+            "relationship_type": "uses",
+            "source_ref": "threat-actor--4307db6d-b8fa-48ad-93f5-f2229479d1bf",
+            "target_ref": "attack-pattern--4b8c2a53-77c7-400f-b8e8-966e3df053ef"
+        },
+        {
+            "type": "relationship",
+            "spec_version": "2.1",
+            "id": "relationship--533ad116-d9ab-41c0-b031-9a6959f98129",
+            "created": "2026-07-09T20:30:08.486257Z",
+            "modified": "2026-07-09T20:30:08.486257Z",
+            "relationship_type": "indicates",
+            "source_ref": "indicator--c3225f79-8d65-4454-a8bc-9f4724b50ec8",
+            "target_ref": "threat-actor--4307db6d-b8fa-48ad-93f5-f2229479d1bf"
+        }
+    ]
+}
